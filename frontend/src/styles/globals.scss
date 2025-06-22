@@ -1,0 +1,17 @@
+@use 'variables' as *;
+
+.scss-example {
+  padding: $spacing-md;
+  
+  &__title {
+    color: $primary-color;
+    margin-bottom: $spacing-sm;
+  }
+  
+  &__content {
+    @include responsive(md) {
+      display: flex;
+      gap: $spacing-md;
+    }
+  }
+}
