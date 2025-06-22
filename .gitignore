@@ -1,3 +1,4 @@
+### BACKEND
 # Python
 __pycache__/
 *.py[cod]
@@ -57,3 +58,43 @@ Thumbs.db
 .pyre/
 .pytype/
 ruff_cache/
+
+
+### FRONTEND
+# Node.js
+node_modules/ 
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Next.js
+.next/
+out/
+.vercel/
+next-env.d.ts
+
+# React / Build outputs
+build/
+dist/
+
+# SCSS
+.sass-cache/
+*.css.map
+*.sass.map
+*.scss.map
+
+# Yarn specific
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# TypeScript
+*.tsbuildinfo
+
+# Misc
+*.pem
