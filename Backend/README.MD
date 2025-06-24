@@ -48,6 +48,5 @@ python manage.py runserver
 Открыть Redoc или Swagger
 
 ```
-http://localhost:8000/redoc/
-http://localhost:8000/swagger/
+http://127.0.0.1:8000/api/swagger/
 ```

@@ -34,7 +34,7 @@ class UserSerializer(serializers.ModelSerializer):
         return user
 
 
-    def get_avatar_base64(self, obj):
+    def get_avatar_base64(self, obj) -> str:
         if obj.avatar and hasattr(obj.avatar, 'path'):
             try:
                 with open(obj.avatar.path, 'rb') as image_file:
@@ -52,3 +52,8 @@ class UserSerializer(serializers.ModelSerializer):
         if only_avatar:
             return {'avatar': rep.get('avatar_base64')}
         return rep
+    
+class ActivateUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CustomUser
+        fields = "__all__"
