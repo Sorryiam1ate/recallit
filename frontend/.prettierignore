@@ -1,0 +1,14 @@
+.next
+node_modules
+build
+dist
+out
+public
+.git
+.husky
+.vscode
+.github
+package-lock.json
+yarn.lock
+src/styles/variables.scss
+

@@ -5,32 +5,32 @@ const api = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
-  timeout: 10000, 
+  timeout: 10000,
 });
 
 api.interceptors.request.use(
-  (config) => {
+  config => {
     const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
-    
+
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
-    
+
     return config;
   },
-  (error) => {
+  error => {
     return Promise.reject(error);
   }
 );
 
 api.interceptors.response.use(
-  (response) => {
+  response => {
     return response;
   },
-  (error) => {
+  error => {
     if (error.response) {
       console.error('API Error:', error.response.status, error.response.data);
-      
+
       if (error.response.status === 401) {
         if (typeof window !== 'undefined') {
           localStorage.removeItem('token');
@@ -41,7 +41,7 @@ api.interceptors.response.use(
     } else {
       console.error('API Setup Error:', error.message);
     }
-    
+
     return Promise.reject(error);
   }
 );
