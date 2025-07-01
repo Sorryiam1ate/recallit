@@ -10,3 +10,5 @@ public
 .github
 package-lock.json
 yarn.lock
+src/styles/variables.scss
+
