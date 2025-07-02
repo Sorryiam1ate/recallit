@@ -156,8 +156,25 @@ export default function MobileMenu({ menuItems }: MobileMenuProps) {
               </ListItemButton>
             </ListItem>
           ))}
-          <ListItem sx={{ mt: 2, px: { xs: 0, sm: 0 } }}>
-            <Button variant="contained" color="primary" fullWidth onClick={toggleDrawer(false)}>
+          <ListItem sx={{ mt: 3, px: { xs: 0, sm: 0 } }}>
+            <Button
+              variant="contained"
+              color="secondary"
+              fullWidth
+              onClick={toggleDrawer(false)}
+              sx={{
+                borderRadius: '20px',
+                py: 1,
+                fontWeight: 500,
+                boxShadow: 'none',
+                backgroundColor: '#f2f2f2',
+                color: '#333',
+                '&:hover': {
+                  backgroundColor: '#e0e0e0',
+                  boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)',
+                },
+              }}
+            >
               Login
             </Button>
           </ListItem>

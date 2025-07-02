@@ -39,8 +39,8 @@ export default function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 2 }}>
-            <Box sx={{ display: 'flex', gap: 2 }}>
+          <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 4 }}>
+            <Box sx={{ display: 'flex', gap: 4 }}>
               {menuItems.map((item, index) => (
                 <Link
                   key={index}
@@ -52,7 +52,24 @@ export default function Header() {
                 </Link>
               ))}
             </Box>
-            <Button variant="contained" color="primary" size="medium">
+            <Button
+              variant="contained"
+              color="secondary"
+              size="medium"
+              sx={{
+                borderRadius: '20px',
+                px: 3,
+                py: 0.8,
+                fontWeight: 500,
+                boxShadow: 'none',
+                backgroundColor: '#f2f2f2',
+                color: '#333',
+                '&:hover': {
+                  backgroundColor: '#e0e0e0',
+                  boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)',
+                },
+              }}
+            >
               Login
             </Button>
           </Box>
