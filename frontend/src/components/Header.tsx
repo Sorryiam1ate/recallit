@@ -1,10 +1,28 @@
 'use client';
 
-import { AppBar, Toolbar, Button, Box, Typography, Container } from '@mui/material';
+import {
+  AppBar,
+  Toolbar,
+  Button,
+  Box,
+  Typography,
+  Container,
+  useMediaQuery,
+  useTheme,
+} from '@mui/material';
 import Link from 'next/link';
 import Image from 'next/image';
+import MobileMenu from './MobileMenu';
 
 export default function Header() {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+
+  const menuItems = [
+    { text: 'Home', href: '/' },
+    { text: 'Modules', href: '/modules' },
+  ];
+
   return (
     <AppBar
       position="fixed"
@@ -20,18 +38,28 @@ export default function Header() {
             </Box>
           </Link>
 
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+          {/* Desktop Navigation */}
+          <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 2 }}>
             <Box sx={{ display: 'flex', gap: 2 }}>
-              <Link href="/" passHref style={{ textDecoration: 'none', color: 'inherit' }}>
-                <Typography sx={{ fontWeight: 500 }}>Home</Typography>
-              </Link>
-              <Link href="/modules" passHref style={{ textDecoration: 'none', color: 'inherit' }}>
-                <Typography sx={{ fontWeight: 500 }}>Modules</Typography>
-              </Link>
+              {menuItems.map((item, index) => (
+                <Link
+                  key={index}
+                  href={item.href}
+                  passHref
+                  style={{ textDecoration: 'none', color: 'inherit' }}
+                >
+                  <Typography sx={{ fontWeight: 500 }}>{item.text}</Typography>
+                </Link>
+              ))}
             </Box>
             <Button variant="contained" color="primary" size="medium">
               Login
             </Button>
+          </Box>
+
+          {/* Mobile Menu Button */}
+          <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+            <MobileMenu menuItems={menuItems} />
           </Box>
         </Toolbar>
       </Container>
