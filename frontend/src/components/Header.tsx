@@ -1,7 +1,8 @@
 'use client';
 
-import { AppBar, Toolbar, Typography, Button, Box } from '@mui/material';
+import { AppBar, Toolbar, Button, Box } from '@mui/material';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Header() {
   return (
@@ -12,17 +13,23 @@ export default function Header() {
       sx={{ borderBottom: '1px solid #e0e0e0' }}
     >
       <Toolbar sx={{ justifyContent: 'space-between' }}>
-        <Typography variant="h6" component="div" sx={{ fontWeight: 'bold' }}>
-          LOGO
-        </Typography>
+        <Link href="/" passHref style={{ textDecoration: 'none', color: 'inherit' }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
+            <Image src="/logo.png" alt="Logo" width={120} height={40} priority />
+          </Box>
+        </Link>
 
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
           <Box sx={{ display: 'flex', gap: 2 }}>
             <Link href="/" passHref style={{ textDecoration: 'none', color: 'inherit' }}>
-              <Typography sx={{ fontWeight: 500 }}>Home</Typography>
+              <Box component="span" sx={{ fontWeight: 500 }}>
+                Home
+              </Box>
             </Link>
             <Link href="/modules" passHref style={{ textDecoration: 'none', color: 'inherit' }}>
-              <Typography sx={{ fontWeight: 500 }}>Modules</Typography>
+              <Box component="span" sx={{ fontWeight: 500 }}>
+                Modules
+              </Box>
             </Link>
           </Box>
           <Button variant="contained" color="primary" size="medium">
