@@ -6,41 +6,29 @@ body {
   background-color: #e8edf2;
   margin: 0;
   padding: 0;
+  min-height: 100vh;
   font-family: var(--font-lexend);
 }
 
 .container-1200 {
   max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   padding: 0 16px;
-
-  @media (min-width: 600px) {
-    padding: 0 24px;
-  }
 }
 
 .container-960 {
   max-width: 960px;
+  width: 100%;
   margin: 0 auto;
   padding: 0 16px;
-
-  @media (min-width: 600px) {
-    padding: 0 24px;
-  }
 }
 
 .scss-example {
-  padding: $spacing-md;
+  color: red;
+}
 
-  &__title {
-    color: $primary-color;
-    margin-bottom: $spacing-sm;
-  }
-
-  &__content {
-    @include responsive(md) {
-      display: flex;
-      gap: $spacing-md;
-    }
-  }
+.MuiToolbar-root {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }

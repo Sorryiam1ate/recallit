@@ -10,9 +10,11 @@ import {
   ListItemText,
   Button,
   ListItemButton,
+  Backdrop,
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import Link from 'next/link';
+import Image from 'next/image';
 import '../styles/burger-menu.scss';
 
 interface MobileMenuProps {
@@ -24,17 +26,31 @@ interface MobileMenuProps {
 
 export default function MobileMenu({ menuItems }: MobileMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [backdropVisible, setBackdropVisible] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 900) {
         setIsOpen(false);
+        setBackdropVisible(false);
       }
     };
 
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  const handleOpen = () => {
+    setBackdropVisible(true);
+    setIsOpen(true);
+  };
+
+  const handleClose = () => {
+    setIsOpen(false);
+    setTimeout(() => {
+      setBackdropVisible(false);
+    }, 300);
+  };
 
   const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
     if (
@@ -44,7 +60,12 @@ export default function MobileMenu({ menuItems }: MobileMenuProps) {
     ) {
       return;
     }
-    setIsOpen(open);
+
+    if (open) {
+      handleOpen();
+    } else {
+      handleClose();
+    }
   };
 
   return (
@@ -54,7 +75,7 @@ export default function MobileMenu({ menuItems }: MobileMenuProps) {
         color="inherit"
         aria-label="menu"
         onClick={toggleDrawer(true)}
-        sx={{ display: { xs: 'flex', md: 'none' } }}
+        sx={{ display: { xs: 'flex', md: 'none' }, mr: { xs: 1, sm: 2 } }}
       >
         <div className={`burger-menu ${isOpen ? 'open' : ''}`}>
           <span className="burger-menu__line"></span>
@@ -62,6 +83,17 @@ export default function MobileMenu({ menuItems }: MobileMenuProps) {
           <span className="burger-menu__line"></span>
         </div>
       </IconButton>
+
+      <Backdrop
+        open={backdropVisible}
+        sx={{
+          zIndex: theme => theme.zIndex.drawer - 1,
+          backgroundColor: 'rgba(0, 0, 0, 0.5)',
+          transition: 'opacity 500ms cubic-bezier(0.4, 0, 0.2, 1)',
+        }}
+        onClick={toggleDrawer(false)}
+        transitionDuration={500}
+      />
 
       <Drawer
         anchor="left"
@@ -73,9 +105,11 @@ export default function MobileMenu({ menuItems }: MobileMenuProps) {
             maxWidth: '300px',
             backgroundColor: 'white',
             boxSizing: 'border-box',
+            px: { xs: 0, sm: 0 },
           },
         }}
         className={isOpen ? 'mobile-menu-enter-active' : 'mobile-menu-exit-active'}
+        transitionDuration={{ enter: 300, exit: 300 }}
       >
         <Box
           sx={{
@@ -88,7 +122,21 @@ export default function MobileMenu({ menuItems }: MobileMenuProps) {
             <CloseIcon />
           </IconButton>
         </Box>
-        <List sx={{ px: 2 }}>
+
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            mb: 3,
+            px: { xs: 2, sm: 3 },
+          }}
+        >
+          <Link href="/" passHref onClick={toggleDrawer(false)}>
+            <Image src="/logo.png" alt="Logo" width={120} height={40} priority />
+          </Link>
+        </Box>
+
+        <List sx={{ px: { xs: 2, sm: 3 } }}>
           {menuItems.map((item, index) => (
             <ListItem key={index} disablePadding>
               <ListItemButton
@@ -108,7 +156,7 @@ export default function MobileMenu({ menuItems }: MobileMenuProps) {
               </ListItemButton>
             </ListItem>
           ))}
-          <ListItem sx={{ mt: 2 }}>
+          <ListItem sx={{ mt: 2, px: { xs: 0, sm: 0 } }}>
             <Button variant="contained" color="primary" fullWidth onClick={toggleDrawer(false)}>
               Login
             </Button>
