@@ -1,4 +1,8 @@
+'use client';
+
 import Image from 'next/image';
+import { Button } from '@mui/material';
+import MenuBookIcon from '@mui/icons-material/MenuBook';
 
 export default function Home() {
   return (
@@ -39,14 +43,27 @@ export default function Home() {
             />
             Deploy now
           </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
+          <Button
+            variant="outlined"
+            startIcon={<MenuBookIcon />}
             href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
             target="_blank"
             rel="noopener noreferrer"
+            sx={{
+              borderRadius: '30px',
+              height: { xs: '40px', sm: '48px' },
+              padding: { xs: '0 16px', sm: '0 20px' },
+              fontSize: { xs: '0.875rem', sm: '1rem' },
+              textTransform: 'none',
+              whiteSpace: 'nowrap',
+              minWidth: { sm: '158px' },
+              '&:hover': {
+                backgroundColor: theme => (theme.palette.mode === 'dark' ? '#1a1a1a' : '#f2f2f2'),
+              },
+            }}
           >
             Read our docs
-          </a>
+          </Button>
         </div>
       </main>
       <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
