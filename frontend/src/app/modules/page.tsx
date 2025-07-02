@@ -1,9 +1,13 @@
 'use client';
 
+import { Typography } from '@mui/material';
+
 export default function Modules() {
   return (
     <>
-      <h2>Modules</h2>
+      <Typography variant="h5" fontWeight={700}>
+        Modules
+      </Typography>
     </>
   );
 }

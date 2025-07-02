@@ -1,6 +1,6 @@
 'use client';
 
-import { AppBar, Toolbar, Button, Box } from '@mui/material';
+import { AppBar, Toolbar, Button, Box, Typography } from '@mui/material';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -22,14 +22,10 @@ export default function Header() {
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
           <Box sx={{ display: 'flex', gap: 2 }}>
             <Link href="/" passHref style={{ textDecoration: 'none', color: 'inherit' }}>
-              <Box component="span" sx={{ fontWeight: 500 }}>
-                Home
-              </Box>
+              <Typography sx={{ fontWeight: 500 }}>Home</Typography>
             </Link>
             <Link href="/modules" passHref style={{ textDecoration: 'none', color: 'inherit' }}>
-              <Box component="span" sx={{ fontWeight: 500 }}>
-                Modules
-              </Box>
+              <Typography sx={{ fontWeight: 500 }}>Modules</Typography>
             </Link>
           </Box>
           <Button variant="contained" color="primary" size="medium">

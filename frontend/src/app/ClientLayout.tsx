@@ -12,6 +12,10 @@ const theme = createTheme({
     secondary: {
       main: '#f2f2f2',
     },
+    background: {
+      default: '#E8EDF2',
+      paper: '#ffffff',
+    },
   },
   typography: {
     fontFamily: 'var(--font-lexend)',
@@ -19,22 +23,28 @@ const theme = createTheme({
       textTransform: 'none',
     },
   },
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: {
+          backgroundColor: '#E8EDF2',
+        },
+      },
+    },
+  },
 });
 
-export default function ClientLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function ClientLayout({ children }: { children: React.ReactNode }) {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Box 
+      <Box
         component="div"
-        sx={{ 
-          display: 'flex', 
-          flexDirection: 'column', 
-          minHeight: '100vh' 
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          minHeight: '100vh',
+          backgroundColor: '#E8EDF2',
         }}
       >
         <Header />

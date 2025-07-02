@@ -1,26 +1,36 @@
-@import 'tailwindcss';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #000;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --background: #ffffff;
+  --foreground: #000;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
-    --foreground: #ededed;
+    --foreground: #000;
   }
 }
 
 body {
-  background: var(--background);
+  background-color: #E8EDF2;
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Явные стили для заголовков, чтобы избежать мерцания */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  font-display: swap;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
 }

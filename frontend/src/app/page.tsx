@@ -1,9 +1,12 @@
 'use client';
+import { Typography } from '@mui/material';
 
 export default function Home() {
   return (
     <>
-      <h2>Home</h2>
+      <Typography variant="h5" fontWeight={700}>
+        Home
+      </Typography>
     </>
   );
 }
