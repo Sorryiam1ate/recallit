@@ -31,6 +31,13 @@ const theme = createTheme({
         },
       },
     },
+    MuiContainer: {
+      styleOverrides: {
+        maxWidthLg: {
+          maxWidth: '960px !important',
+        },
+      },
+    },
   },
 });
 
@@ -49,7 +56,15 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
       >
         <Header />
         <Toolbar />
-        <Container component="main" sx={{ flexGrow: 1, py: 4 }} maxWidth="lg">
+        <Container
+          component="main"
+          sx={{
+            flexGrow: 1,
+            py: 4,
+            maxWidth: '960px !important',
+          }}
+          maxWidth="lg"
+        >
           {children}
         </Container>
         <Footer />
