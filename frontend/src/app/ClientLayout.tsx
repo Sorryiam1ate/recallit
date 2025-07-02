@@ -13,18 +13,28 @@ const theme = createTheme({
       main: '#f2f2f2',
     },
   },
+  typography: {
+    fontFamily: 'var(--font-lexend)',
+    button: {
+      textTransform: 'none',
+    },
+  },
 });
 
-export default function ClientLayout({ children }: { children: React.ReactNode }) {
+export default function ClientLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Box
+      <Box 
         component="div"
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          minHeight: '100vh',
+        sx={{ 
+          display: 'flex', 
+          flexDirection: 'column', 
+          minHeight: '100vh' 
         }}
       >
         <Header />

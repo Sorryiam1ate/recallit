@@ -4,17 +4,18 @@ import { Box, Container, Typography } from '@mui/material';
 
 export default function Footer() {
   return (
-    <Box 
-      component="footer" 
-      sx={{ 
-        py: 3, 
+    <Box
+      component="footer"
+      sx={{
+        py: 3,
         mt: 'auto',
-        backgroundColor: (theme) => theme.palette.grey[100],
-        borderTop: '1px solid #e0e0e0'
+        backgroundColor: 'secondary.light',
+        borderTop: '1px solid',
+        borderColor: 'divider',
       }}
     >
       <Container maxWidth="lg">
-        <Typography variant="body2" color="text.secondary" align="center">
+        <Typography variant="body2" color="text.secondary" align="center" sx={{ fontWeight: 300 }}>
           © {new Date().getFullYear()} Recallit. All rights reserved.
         </Typography>
       </Container>
