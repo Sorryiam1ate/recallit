@@ -1,0 +1,79 @@
+.burger-menu {
+  position: relative;
+  width: 24px;
+  height: 16px;
+  cursor: pointer;
+
+  &__line {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #000;
+    transition: all 0.3s ease;
+
+    &:nth-child(1) {
+      top: 0;
+    }
+
+    &:nth-child(2) {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &:nth-child(3) {
+      bottom: 0;
+    }
+  }
+
+  &.open {
+    .burger-menu__line {
+      &:nth-child(1) {
+        top: 50%;
+        transform: translateY(-50%) rotate(45deg);
+      }
+
+      &:nth-child(2) {
+        opacity: 0;
+      }
+
+      &:nth-child(3) {
+        bottom: 50%;
+        transform: translateY(50%) rotate(-45deg);
+      }
+    }
+  }
+}
+
+.mobile-menu-enter {
+  transform: translateX(-100%);
+}
+
+.mobile-menu-enter-active {
+  transform: translateX(0);
+  transition: transform 300ms ease-in-out;
+}
+
+.mobile-menu-exit {
+  transform: translateX(0);
+}
+
+.mobile-menu-exit-active {
+  transform: translateX(-100%);
+  transition: transform 300ms ease-in-out;
+}
+
+@media (max-width: 600px) {
+  .MuiDrawer-root .MuiDrawer-paper {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  .mobile-menu-container {
+    padding: 0 16px;
+  }
+}
+
+// Стили для затемнения
+.MuiBackdrop-root {
+  transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
